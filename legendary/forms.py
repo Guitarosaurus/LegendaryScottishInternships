@@ -1,6 +1,6 @@
 from django import forms
 from legendary.models import Company, Internship, Comment, UserProfile
-from django.conrtib.auth.models import User
+from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     # Overrides so that password is not visible for everyone to see
