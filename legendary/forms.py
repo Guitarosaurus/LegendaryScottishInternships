@@ -13,8 +13,7 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('profile',)
-
+        fields = ('picture',)
 
 class CompanyForm(forms.ModelForm):
     name = forms.CharField(max_length=Company.MAX_NAME_LENGTH, 
@@ -54,3 +53,11 @@ class InternshipForm(forms.ModelForm):
         model = Internship
         # not sure about this
         exclude = ('company_id', 'user_ids',)
+
+class CommentForm(forms.ModelForm):
+    name = forms.CharField(Comment.MAX_COMMENT_LENGTH)
+    # Rest of fields filled in by login details?
+
+    class Meta:
+        model = Comment
+        fields = ('name', )
