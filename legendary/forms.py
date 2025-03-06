@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 
 class UserForm(forms.ModelForm):
     # Overrides so that password is not visible for everyone to see
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput(), 
+                               help_text="Please make sure password is minimum 6 characters")
 
     class Meta:
         model = User
