@@ -1,14 +1,20 @@
 from django import forms
-from legendary.models import Company, Internship, Comment
+from legendary.models import Company, Internship, Comment, UserProfile
 from django.conrtib.auth.models import User
 
-class UserLoginForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     # Overrides so that password is not visible for everyone to see
     password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password',)
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('profile',)
+
 
 class CompanyForm(forms.ModelForm):
     name = forms.CharField(max_length=Company.MAX_NAME_LENGTH, 
