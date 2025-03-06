@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>{% block title_block %}LegendaryScottishInternships{% endblock %}</title>
+    </head>
+    <body>
+        <div>
+        {% block body_block %}
+        {% endblock %}
+        </div>
+        <hr />
+        <div>
+            <ul>
+                <!--{% if user.is_authenticated %}-->
+                    <!-- Show these links when the user is logged in -->
+ 
+                <!--{% else %}-->
+                    <!-- Show these links when the user is NOT logged in -->
+
+                <!--{% endif %}-->
+                    <!-- Outside the conditional statements, ALWAYS show -->
+                <li><a href="{% url 'legendary:index' %}">Home</a></li>
+            </ul>
+        </div>
+    </body>
+</html>
