@@ -21,9 +21,37 @@ def about(request):
 
     return response
 
+def report(request):
+
+    context_dict = {}
+    response = render(request,'legendary/reportform.html', context = context_dict)
+
+    return response
+
 def profile(request):
 
     context_dict = {}
     response = render(request, 'legendary/profile.html', context=context_dict)
+
+    return response
+
+def login(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/login.html', context=context_dict)
+
+    return response
+
+def register(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/registerform.html', context=context_dict)
+
+    return response
+
+def listings(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/listings.html',context = context_dict)
 
     return response
