@@ -13,3 +13,17 @@ def index(request):
 
     # Return response back to the user, updating any cookies that need changed.
     return response
+
+def about(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/about.html', context=context_dict)
+
+    return response
+
+def profile(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/profile.html', context=context_dict)
+
+    return response
