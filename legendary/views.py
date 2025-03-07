@@ -35,6 +35,20 @@ def profile(request):
 
     return response
 
+def update_profile(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/update_profile_form.html', context=context_dict)
+
+    return response
+
+def update_user_checklist(request):
+
+    context_dict = {}
+    response = render(request, 'legendary/update_user_checklist_form.html', context=context_dict)
+
+    return response
+
 def login(request):
 
     context_dict = {}
