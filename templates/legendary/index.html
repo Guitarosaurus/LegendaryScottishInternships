@@ -13,7 +13,13 @@
 </div>
 <style>
 body{
-    background-image:url("{% static 'images/index.jpg' %}")
+    background-image:url("{% static 'images/index.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; /* Ensure the body covers the full viewport height */
+    margin: 0; /* Remove default margin */
 }
 </style>
 
