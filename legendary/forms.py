@@ -52,7 +52,6 @@ class InternshipForm(forms.ModelForm):
 
     class Meta:
         model = Internship
-        # not sure about this
         exclude = ('company_id', 'user_ids',)
 
 class CommentForm(forms.ModelForm):
@@ -62,3 +61,10 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('name', )
+
+class ChangeChecklistForm(forms.ModelForm):
+    checklist = forms.CharField(Internship.MAX_LIST_LENGTH, 
+                                help_text = "Please enter the updated checkist")
+    
+    class Meta:
+        fields = ('name',)
