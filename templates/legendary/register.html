@@ -1,0 +1,68 @@
+{% extends 'legendary/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Register
+{% endblock %}
+
+{% block body_block %}
+<div class="topnav">
+    <a href="{% url 'legendary:profile' %}">Profile</a>
+    <a href="{% url 'legendary:about' %}">About</a>
+    <a href="{% url 'legendary:index' %}">Home</a>
+</div>
+
+<h1>Register for Legendary!</h1>
+
+    <form id="user_form" method="post" action="{% url 'legendary:register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="submit" value="Register" />
+    </form>
+
+<style>
+    h1 {
+        font-family: 'Georgia', serif;
+        font-size: 30px;
+        color: #d73616;
+        line-height: 1.6;
+        text-align: center;
+        word-spacing: 8px;
+        vertical-align: middle;
+        margin-right: 159px;
+        margin-top: 130px;
+    }
+
+    p {
+        font-family: 'Georgia', serif;
+        font-size: 22px;
+        color: #d73616;
+        line-height: 1.6;
+        text-align: center;
+        word-spacing: 8px;
+        vertical-align: middle;
+    }
+
+    form {
+        font-family: 'Georgia', serif;
+        font-size: 22px;
+        color: #d73616;
+        line-height: 1.6;
+        text-align: center;
+        word-spacing: 8px;
+        vertical-align: middle;
+    }
+
+    body{
+        background-image:url("{% static 'images/index.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        height: 100vh; /* Ensure the body covers the full viewport height */
+        margin: 0; /* Remove default margin */
+    }
+</style>
+
+{% endblock %}
