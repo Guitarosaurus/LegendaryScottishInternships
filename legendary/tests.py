@@ -1,5 +1,7 @@
 from django.test import TestCase
-from legendary.models import Company
+from legendary.models import Company, Internship
+from django.template.defaultfilters import slugify
+from sqlite3 import IntegrityError
 
 # Create your tests here.
 class CompanyTests(TestCase):
@@ -29,4 +31,64 @@ class CompanyTests(TestCase):
     def test_self_str(self):
         company = Company(name = "testing")
 
-        self.assertEqual(company.name, "testing")
+        self.assertEqual(str(company), "testing")
+
+class InternshipTests(TestCase):
+    def test_default_description(self):
+        internship = Internship()
+
+        self.assertEqual(internship.description, "This is an internship...")
+
+    def test_default_closing_date(self):
+        internship = Internship()
+
+        self.assertEqual(internship.closing_date, None)
+
+    def test_default_start_date(self):
+        internship = Internship()
+
+        self.assertEqual(internship.start_date, None)
+
+    def test_default_end_date(self):
+        internship = Internship()
+
+        self.assertEqual(internship.end_date, None)
+
+    def test_default_salary(self):
+        internship = Internship()
+
+        self.assertEqual(internship.salary, None)
+
+    def test_default_address(self):
+        internship = Internship()
+
+        self.assertEqual(internship.address, "None")
+
+    def test_default_checklist(self):
+        internship = Internship()
+
+        self.assertEqual(internship.checklist, "No extra items")
+
+    def test_slug(self):
+        internship = Internship(name = "testing slug")
+        internship.slug = slugify(internship.name)
+    
+        self.assertEqual(internship.slug, "testing-slug")
+
+    def test_save_without_all_params(self):
+        # If certain fields are not filled should raise an error
+        internship = Internship()
+        error_to_save = False
+
+        try:
+            internship.save()
+        except:
+            error_to_save = True
+        
+        self.assertTrue(error_to_save)
+
+    def test_self_str(self):
+        internship = Internship()
+        internship.name = "Test"
+
+        self.assertEqual(str(internship), "Test")
