@@ -59,7 +59,7 @@ def login(request):
 def register(request):
 
     context_dict = {}
-    response = render(request, 'legendary/registerform.html', context=context_dict)
+    response = render(request, 'legendary/register.html', context=context_dict)
 
     return response
 
