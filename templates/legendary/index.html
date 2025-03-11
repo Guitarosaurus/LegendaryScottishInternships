@@ -6,18 +6,15 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="topnav">
-    <a href="{% url 'legendary:login' %}">Login</a>
-    <a href="{% url 'legendary:register' %}">Register</a>
-    <a href="{% url 'legendary:profile' %}">Profile</a>
-    <a href="{% url 'legendary:about' %}">About</a>
-    <a href="{% url 'legendary:index' %}">Home</a>
-</div>
 <div>
-    <h1>Welcome to Legendary Scottish Internships</h1>
-    <p class="a">If you are new here, please go to Register</p>
-    <p class="b">If you are already a member, please go to Login</p>
-    <p class="c">If you would like to know more about our website, just click About!</p>
+    <div class="behindText">
+        <h1>Welcome to Legendary Scottish Internships</h1>
+    </div>
+    <div class="behindText">
+        <p class="a">If you are new here, please go to Register</p>
+        <p class="b">If you are already a member, please go to Login</p>
+        <p class="c">If you would like to know more about our website, just click About!</p>
+    </div>
 </div>
 <style>
     p.a {
@@ -51,6 +48,11 @@
         line-height: 1.6;
         text-align: center;
         word-spacing: 8px;
+    }
+    
+    .behindText {
+        background-color: #1684a6;
+        padding: 4px;
     }
 
     body{
