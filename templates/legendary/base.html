@@ -38,6 +38,14 @@
         </style>
         <script src="{% static "js/legendary_jquery.js" %}" crossorigin="anonymous"></script>
         <script src="{% static "js/legendary_topnav.js" %}" crossorigin="anonymous"></script>
+        
+        <div class="topnav">
+            <a href="{% url 'legendary:login' %}">Login</a>
+            <a href="{% url 'legendary:register' %}">Register</a>
+            <a href="{% url 'legendary:profile' %}">Profile</a>
+            <a href="{% url 'legendary:about' %}">About</a>
+            <a href="{% url 'legendary:index' %}">Home</a>
+        </div>
     </head>
     <body>
         <div>
