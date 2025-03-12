@@ -1,12 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,HttpResponseRedirect
+from legendary.forms import UserForm,UserProfileForm,CompanyForm,InternshipForm,CommentForm,ChangeChecklistForm
+from legendary.models import Company, Internship, Comment, UserProfile
+from django.contrib.auth.models import User
+from django.urls import reverse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
-# Create your views here.
+
+
 def index(request):
 
-    # Construct a dictionary to pass to the template engine as its context.
-    # Note the key boldmessage matches to {{ boldmessage }} in the template!
     context_dict = {}
-    context_dict['boldmessage']= 'Crunchy, creamy, cookie, candy, cupcake!'
+
     
     # Obtain our Response object early so we can add cookie information.
     response = render(request, 'legendary/index.html', context=context_dict)
@@ -35,6 +42,7 @@ def profile(request):
 
     return response
 
+@login_required
 def update_profile(request):
 
     context_dict = {}
@@ -42,6 +50,7 @@ def update_profile(request):
 
     return response
 
+@login_required
 def update_user_checklist(request):
 
     context_dict = {}
