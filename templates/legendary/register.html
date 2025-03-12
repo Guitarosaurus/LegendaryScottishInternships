@@ -6,12 +6,6 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="topnav">
-    <a href="{% url 'legendary:profile' %}">Profile</a>
-    <a href="{% url 'legendary:about' %}">About</a>
-    <a href="{% url 'legendary:index' %}">Home</a>
-</div>
-
 <h1>Register for Legendary!</h1>
 
     <form id="user_form" method="post" action="{% url 'legendary:register' %}" enctype="multipart/form-data">
