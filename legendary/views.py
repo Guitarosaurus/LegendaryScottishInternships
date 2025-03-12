@@ -45,30 +45,94 @@ def profile(request):
 @login_required
 def update_profile(request):
 
-    context_dict = {}
-    response = render(request, 'legendary/update_profile_form.html', context=context_dict)
+    form = UserProfileForm()
+
+    if form.is_valid():
+
+        form.save(commit = True)
+
+        return redirect('/legendary/')
+    
+    else:
+
+        print(form.errors)
+
+
+    response = render(request, 'legendary/update_profile_form.html', {'form': form})
 
     return response
 
 @login_required
-def update_user_checklist(request):
+def change_checklist(request):
+    form = ChangeChecklistForm()
 
-    context_dict = {}
-    response = render(request, 'legendary/update_user_checklist_form.html', context=context_dict)
-
+    if form.is_valid():
+        
+        form.save(commit = True)
+        #wondering the best redirect here
+        return redirect('/legendary/')
+    
+    else:
+        
+        print(form.errors)   
+    
+    response = render(request, 'legendary/change_checklist_form.html', {'form': form})
+    
     return response
 
 def login(request):
 
-    context_dict = {}
-    response = render(request, 'legendary/login.html', context=context_dict)
+    if request.method =='POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-    return response
+        user = authenticate(username=username, password=password)
+
+        if user:
+
+            if user.is_active:
+
+                login(request,user)
+                return redirect(reverse('legendary:index'))
+            else:
+                return HttpResponse("Your account is disabled")
+        else:
+            return HttpResponse("Invalid login details supplied")
+    else:
+        return render(request,'legendary/login.html')
+
 
 def register(request):
 
-    context_dict = {}
-    response = render(request, 'legendary/register.html', context=context_dict)
+    registered = False
+    if request.method == 'POST':
+        user_form = UserForm(request.POST)
+        profile_form = UserProfileForm(request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+            
+            profile.save()
+            registered = True
+        else:
+            print(user_form.errors,profile_form.errors)
+    else:
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+
+    response = render(request, 
+                      'legendary/register.html', 
+                      context = {'user_form': user_form,
+                             'profile_form': profile_form,
+                             'registered': registered})
 
     return response
 
@@ -78,3 +142,4 @@ def listings(request):
     response = render(request, 'legendary/listings.html',context = context_dict)
 
     return response
+
