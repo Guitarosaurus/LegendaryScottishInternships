@@ -6,12 +6,6 @@
 {% endblock %}
 
 {% block body_block %}
-<div class="topnav">
-    <a href="{% url 'legendary:register' %}">Register</a>
-    <a href="{% url 'legendary:profile' %}">Profile</a>
-    <a href="{% url 'legendary:about' %}">About</a>
-    <a href="{% url 'legendary:index' %}">Home</a>
-</div>
 <h1>Login to LegendaryScottishInternships</h1>
 <form id="login_form" method="post" action="{% url 'legendary:login' %}">
     {% csrf_token %}
