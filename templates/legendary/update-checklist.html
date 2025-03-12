@@ -1,0 +1,67 @@
+{% extends 'legendary/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    UpdateChecklist
+{% endblock %}
+
+{% block body_block %}
+<h1>Update your Checklist</h1>
+<form id="update-user-checklist-form" method="post" action="{% url 'legendary:profile:update-user-checklist' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ checklist_form.as_p }}
+    <input type="submit" name="submit" value="submit" />
+</form>
+<div id="spacer"></div>
+
+<style>
+    h1 {
+    text-align: center;
+    color: #daf511;
+    margin-bottom: 20px;
+    }
+
+    #update-user-checklist-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        margin: auto;
+        transform: translate(0px, 15vh);
+        background-image: url('updateChecklist.jpg');
+    }
+
+    #update-user-checklist-form input[type="text"],
+    #update-user-checklist-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    #update-user-checklist-form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #update-user-checklist-form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    #spacer {
+        height: 30vh;
+    }
+</style>
+{% endblock %}
+
+
