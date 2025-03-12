@@ -1,0 +1,67 @@
+{% extends 'legendary/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    UpdateProfile
+{% endblock %}
+
+{% block body_block %}
+<h1>Update your Profile</h1>
+<form id="user_profile_form" method="post" action="{% url 'legendary:profile:update-profile' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <input type="submit" name="submit" value="submit" />
+</form>
+<div id="spacer"></div>
+
+<style>
+    h1 {
+    text-align: center;
+    color: #daf511;
+    margin-bottom: 20px;
+    }
+
+    #user_profile_form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        margin: auto;
+        transform: translate(0px, 15vh);
+        background-image: url('profile.jpg');
+    }
+
+    #user_profile_form input[type="text"],
+    #user_profile_form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    #user_profile_form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #user_profile_form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    #spacer {
+        height: 30vh;
+    }
+</style>
+{% endblock %}
+
+
