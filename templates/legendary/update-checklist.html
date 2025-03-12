@@ -7,7 +7,7 @@
 
 {% block body_block %}
 <h1>Update your Checklist</h1>
-<form id="update-user-checklist-form" method="post" action="{% url 'legendary:profile:update-user-checklist' %}" enctype="multipart/form-data">
+<form id="update-user-checklist-form" method="post" action="{% url 'legendary:profile:update-checklist' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ user_form.as_p }}
     {{ checklist_form.as_p }}
