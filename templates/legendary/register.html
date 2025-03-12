@@ -37,14 +37,45 @@
         vertical-align: middle;
     }
 
-    form {
-        font-family: 'Georgia', serif;
-        font-size: 22px;
-        color: #d73616;
-        line-height: 1.6;
-        text-align: center;
-        word-spacing: 8px;
-        vertical-align: middle;
+    /* Style the form container */
+    #login_form {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style the submit button */
+    #login_form input[type="submit"] {
+        background-color: #4CAF50; 
+        color: white; 
+        padding: 12px 24px; 
+        border: none; 
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Pointer cursor on hover */
+        width: 100%; 
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Hover effect */
+    #login_form input[type="submit"]:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: translateY(-2px); /* Slight lift */
+    }
+
+    /* Active effect */
+    #login_form input[type="submit"]:active {
+        transform: translateY(0); /* Reset lift */
+    }
+
+    /* Disabled state */
+    #login_form input[type="submit"]:disabled {
+        background-color: #ccc; 
+        cursor: not-allowed; 
+        opacity: 0.7; /* Reduce opacity */
     }
 
     body{
