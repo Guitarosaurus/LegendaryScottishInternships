@@ -1,0 +1,94 @@
+{% extends 'legendary/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+Homepage
+{% endblock %}
+
+{% block body_block %}
+<script src="{% static "js/legendary_listings.js" %}" crossorigin="anonymous"></script>
+<div>
+    <h1>Welcome to the Legendary Scottish Internships listings page</h1>
+</div>
+
+<div class="split listings">
+    {% for listing in listings %}
+        <div class="listing">
+            <p class="name">{{ listing.name }}</p>
+            <div class="hidden" style="display: none;">
+                <p class="description">{{ listing.description }}</p>
+                <p class="closedate">{{ listing.closing_date }}</p>
+                <p class="startdate">{{ listing.start_date }}</p>
+                <p class="enddate">{{ listing.end_date }}</p>
+                <p class="salary">{{ listing.salary }}</p>
+                <p class="address">{{ listing.address }}</p>
+                <p class="checklist">{{ listing.checklist }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="listing">
+        <p class="name">Test Internship</p>
+        <div class="hidden" style="display: none;">
+            <p class="description">description</p>
+            <p class="closedate">closing_date</p>
+            <p class="startdate">start_date</p>
+            <p class="enddate">end_date</p>
+            <p class="salary">salary</p>
+            <p class="address">address</p>
+            <p class="checklist">checklist</p>
+        </div>
+    </div>
+    <div class="listing">
+        <p class="name">Test Internship 2</p>
+        <div class="hidden" style="display: none;">
+            <p class="description">description 2</p>
+            <p class="closedate">closing_date 2</p>
+            <p class="startdate">start_date 2</p>
+            <p class="enddate">end_date 2</p>
+            <p class="salary">salary 2</p>
+            <p class="address">address 2</p>
+            <p class="checklist">checklist 2</p>
+        </div>
+    </div>
+</div>
+
+<div class="split internship">
+    <div class="details">
+        <h3 id="name">No internship selected</h3>
+        <p id="description"></p>
+        <p id="closedate"></p>
+        <p id="startdate"></p>
+        <p id="enddate"></p>
+        <p id="salary"></p>
+        <p id="address"></p>
+        <p id="checklist"></p>
+    </div>
+</div>
+
+<style>
+.split {
+    display:inline-block;
+    height: 70vh;
+    width: 49%;
+    background-color: #222222;
+    overflow: scroll;
+}
+.listing {
+    background-color: #303030;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #444464;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.listing:hover {
+    background-color: #404040;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #444464;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+</style>
+
+{% endblock %}
