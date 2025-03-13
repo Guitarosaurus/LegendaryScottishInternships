@@ -40,10 +40,11 @@
         <script src="{% static "js/legendary_topnav.js" %}" crossorigin="anonymous"></script>
         
         <div class="topnav">
-            <a href="{% url 'legendary:login' %}">Login</a>
-            <a href="{% url 'legendary:register' %}">Register</a>
             {% if user.is_authenticated %}
                 <a href="{% url 'legendary:profile' %}">Profile</a>
+            {% else %}
+                <a href="{% url 'legendary:login' %}">Login</a>
+                <a href="{% url 'legendary:register' %}">Register</a>
             {% endif %}
             <a href="{% url 'legendary:about' %}">About</a>
             <a href="{% url 'legendary:index' %}">Home</a>
