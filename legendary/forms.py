@@ -18,6 +18,7 @@ class UserProfileForm(forms.ModelForm):
 
 class CompanyForm(forms.ModelForm):
     name = forms.CharField(max_length=Company.MAX_NAME_LENGTH, 
+<<<<<<< HEAD
                             help_text = "Please enter company name.")
     address = forms.CharField(max_length=Company.MAX_ADDR_LENGTH,
                             help_text="Please enter a company address.")
@@ -25,6 +26,15 @@ class CompanyForm(forms.ModelForm):
                             help_text="Please enter an company email.")
     website = forms.CharField(max_length=Company.MAX_URL_LENGTH,
                               help_text="Please enter company website")
+=======
+                            help_text = "Please enter company name.",)
+    address = forms.CharField(max_length=Company.MAX_ADDR_LENGTH,
+                            help_text="Please enter a company address.")
+    email = forms.CharField(max_length=Company.MAX_EMAIL_LENGTH,
+                            help_text="Please enter an company email.",)
+    website = forms.CharField(max_length=Company.MAX_URL_LENGTH,
+                              help_text="Please enter company website",)
+>>>>>>> d4988a4 (update forms mistake: max_length assignment)
     
     class Meta:
         model = Company
@@ -32,7 +42,11 @@ class CompanyForm(forms.ModelForm):
 
 class InternshipForm(forms.ModelForm):
     name = forms.CharField(max_length=Internship.MAX_NAME_LENGTH,
+<<<<<<< HEAD
                            help_text="Please enter the internship name.")
+=======
+                           help_text="Please enter the internship name.",)
+>>>>>>> d4988a4 (update forms mistake: max_length assignment)
     description = forms.CharField(max_length=Internship.MAX_DESC_LENGTH, 
                                   help_text="Please enter a description.")
     closing_date = forms.DateField(help_text="Please enter the closing date.")
@@ -45,7 +59,11 @@ class InternshipForm(forms.ModelForm):
     # Not sure if there is a better way to enter the checklist
     checklist = forms.CharField(max_length=Internship.MAX_LIST_LENGTH,
                                 help_text="Please enter items required")
+<<<<<<< HEAD
     slug = forms.CharField( required=False)
+=======
+    #slug = forms.CharField(unique = True, required=False)
+>>>>>>> d4988a4 (update forms mistake: max_length assignment)
 
     class Meta:
         model = Internship
