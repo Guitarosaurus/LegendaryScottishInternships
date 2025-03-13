@@ -80,7 +80,7 @@ def change_checklist(request):
     
     return response
 
-def login(request):
+def user_login(request):
 
     if request.method =='POST':
         username = request.POST.get('username')
