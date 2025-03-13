@@ -11,24 +11,39 @@
 <section class="about-section">
     <div class="block comprehensive-listings">
       <h2>Comprehensive Listings</h2>
-      <p>We aggregate internship opportunities from across Scotland, covering a wide range of industries such as technology, finance, healthcare, creative arts, engineering, tourism, and more. No matter your field of interest, you’ll find relevant opportunities in one place.</p>
+      <p>We aggregate internship opportunities from across Scotland, 
+        covering a wide range of industries such as technology, finance, 
+        healthcare, creative arts, engineering, tourism, and more. 
+        No matter your field of interest, you’ll find relevant opportunities 
+        in one place.</p>
     </div>
 
     <div class="block user-friendly-platform">
       <h2>User-Friendly Platform</h2>
-      <p>Our website is designed to be intuitive and easy to navigate, allowing you to search, filter, and apply for internships with ease. Whether you’re looking for remote roles, part-time positions, or full-time opportunities, our filters help you find the perfect match.</p>
+      <p>Our website is designed to be intuitive and easy to navigate,
+        allowing you to search, filter, and apply for internships with ease. 
+        Whether you’re looking for remote roles, part-time positions, 
+        or full-time opportunities, our filters help you find the perfect match.</p>
+    </div>
+
+    <div class="block cultural-immersion">
+      <h2>Cultural Immersion</h2>
+      <p>Interning in Scotland is a unique experience that allows you to 
+        immerse yourself in the local culture, history, and traditions. you’ll
+        feel the unique charm that so many visitors fall in love with.
+        From the vibrant cities to the stunning landscapes, Scotland offers 
+        a diverse range of experiences that will enrich your personal and 
+        professional development. </p>
+    </div>
+
+    <div class="block Legendary-experience">
+      <h2>Legendary Experience</h2>
+      <p>We’re passionate about helping you create unforgettable memories 
+        and professional growth during your time in Scotland. 
+        Let us guide you toward an internship that’s not just a job,
+        but a legendary experience!</p>
     </div>
   </section>
-
-<p>We are your ultimate hub for discovering and accessing internship opportunities across Scotland! 
-    Our mission is to simplify your search by bringing together a comprehensive collection of internships 
-    from diverse industries and locations throughout this vibrant and historic country.
-     Whether you're a student or recent graduate, our platform connects you with roles 
-     in tech, finance, creative arts, engineering, tourism, and more—all in one place. 
-     From the bustling cities of Edinburgh and Glasgow to the serene landscapes of the Highlands 
-     and beyond, we’ve curated opportunities that align with your goals and aspirations. 
-     Explore, apply, and take the first step toward an unforgettable professional journey 
-     in Scotland with Legendary Scottish Internship!</p>
 
 <style>
 
@@ -37,10 +52,10 @@
       margin: 0;
       padding: 0;
       color: #333;
-      background-image: url('about.jpg'); /* Add your background image here */
-      background-size: cover; /* Ensures the image covers the entire background */
-      background-position: center; /* Centers the image */
-      background-attachment: fixed; /* Keeps the image fixed while scrolling */
+      background-image: url("{% static 'images/about.jpg' %}"); 
+      background-size: cover; 
+      background-position: center; 
+      background-attachment: fixed; 
     }
 
     .about-section {
@@ -71,11 +86,11 @@
     .block h2 {
       font-size: 24px;
       margin-bottom: 15px;
-      color: #2c3e50;
+      color: #1f6dba;
     }
 
     .block p {
-      font-size: 16px;
+      font-size: 21px;
       line-height: 1.6;
       color: #555;
     }
