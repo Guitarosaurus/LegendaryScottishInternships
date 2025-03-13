@@ -58,7 +58,7 @@ def update_profile(request):
         print(form.errors)
 
 
-    response = render(request, 'legendary/update_profile_form.html', {'form': form})
+    response = render(request, 'legendary/update-profile.html', {'form': form})
 
     return response
 
@@ -76,7 +76,7 @@ def change_checklist(request):
         
         print(form.errors)   
     
-    response = render(request, 'legendary/change_checklist_form.html', {'form': form})
+    response = render(request, 'legendary/update-checklist.html', {'form': form})
     
     return response
 
