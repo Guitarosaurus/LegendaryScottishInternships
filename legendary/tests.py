@@ -1,7 +1,8 @@
 from django.test import TestCase
-from legendary.models import Company, Internship
+from legendary.models import Company, Internship, UserProfile
 from django.template.defaultfilters import slugify
-from sqlite3 import IntegrityError
+import datetime
+from populate_legendary import populate
 
 # Create your tests here.
 class CompanyTests(TestCase):
@@ -92,3 +93,25 @@ class InternshipTests(TestCase):
         internship.name = "Test"
 
         self.assertEqual(str(internship), "Test")
+
+class ProfileTests(TestCase):
+    def test_picture_creation(self):
+        userProfile = UserProfile()
+        userProfile.picture = "index.jpg"
+
+        self.assertEqual(userProfile.picture, "index.jpg")
+
+class DatabaseTests(TestCase):
+    populate()
+
+    def test_no_of_categories(self):
+        companies = Company.objects.filter()
+
+        self.assertEqual(len(companies), 1, f"Expected only one company")
+    
+    def test_no_of_internships(self):
+        internships = Internship.objects.filter()
+
+        self.assertEqual(len(internships), 2, f"Expected 2 internships")
+
+## Add tests to test admin functionality
