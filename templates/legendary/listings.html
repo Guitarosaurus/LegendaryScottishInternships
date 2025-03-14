@@ -26,30 +26,6 @@ Homepage
             </div>
         </div>
     {% endfor %}
-    <div class="listing">
-        <p class="name">Test Internship</p>
-        <div class="hidden" style="display: none;">
-            <p class="description">description</p>
-            <p class="closedate">closing_date</p>
-            <p class="startdate">start_date</p>
-            <p class="enddate">end_date</p>
-            <p class="salary">salary</p>
-            <p class="address">address</p>
-            <p class="checklist">checklist</p>
-        </div>
-    </div>
-    <div class="listing">
-        <p class="name">Test Internship 2</p>
-        <div class="hidden" style="display: none;">
-            <p class="description">description 2</p>
-            <p class="closedate">closing_date 2</p>
-            <p class="startdate">start_date 2</p>
-            <p class="enddate">end_date 2</p>
-            <p class="salary">salary 2</p>
-            <p class="address">address 2</p>
-            <p class="checklist">checklist 2</p>
-        </div>
-    </div>
 </div>
 
 <div class="split internship">
@@ -62,6 +38,7 @@ Homepage
         <p id="salary"></p>
         <p id="address"></p>
         <p id="checklist"></p>
+        <a href="{% url 'legendary:report' %}">Report incorrect/missing information</a>
     </div>
 </div>
 

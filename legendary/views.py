@@ -139,6 +139,7 @@ def register(request):
 def listings(request):
 
     context_dict = {}
+    context_dict['listings'] = Internship.objects.order_by('-name')
     response = render(request, 'legendary/listings.html',context = context_dict)
 
     return response
