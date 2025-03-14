@@ -17,7 +17,14 @@
     {% if user.is_authenticated %}
         <form action="{% url 'legendary:index' %}" method="post" style="text-align: center; margin-top: 20px;">
             {% csrf_token %}
-            <button type="submit" style="padding: 10px 20px; font-size: 16px; background-color: #d73616; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            <button type="submit" 
+            style="padding: 10px 20px; 
+            font-size: 16px; 
+            background-color: #d73616; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;">
                 Logout
             </button>
         </form>
