@@ -58,11 +58,6 @@ def profile(request):
 
 @login_required
 def update_profile(request):
-    #I updated some of this function but I couldn't find the right arguments to go in UserProfileForm()
-    #And that is critical for functionality
-    #I tried UserProfileForm(request.POST,request.FILES,instance=request.user.profile)
-    #but got an error that profile is not an attribute of user.
-    #someone more familiar with the model should take a crack at this!
 
     if request.method == "POST":
         form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
