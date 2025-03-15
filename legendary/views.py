@@ -65,7 +65,7 @@ def update_profile(request):
     #someone more familiar with the model should take a crack at this!
 
     if request.method == "POST":
-        form = UserProfileForm()
+        form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
         if form.is_valid():
             form.save()
             return redirect('/legendary/')
