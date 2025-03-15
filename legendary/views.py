@@ -35,7 +35,21 @@ def report(request):
 
     return response
 
+@login_required
 def profile(request):
+
+
+    # form = UserProfileForm()
+
+    # if form.is_valid():
+
+    #     form.save(commit = True)
+
+    #     return redirect('/legendary/')
+    
+    # else:
+
+    #     print(form.errors)
 
     context_dict = {}
     response = render(request, 'legendary/profile.html', context=context_dict)
@@ -44,18 +58,21 @@ def profile(request):
 
 @login_required
 def update_profile(request):
+    #I updated some of this function but I couldn't find the right arguments to go in UserProfileForm()
+    #And that is critical for functionality
+    #I tried UserProfileForm(request.POST,request.FILES,instance=request.user.profile)
+    #but got an error that profile is not an attribute of user.
+    #someone more familiar with the model should take a crack at this!
 
-    form = UserProfileForm()
-
-    if form.is_valid():
-
-        form.save(commit = True)
-
-        return redirect('/legendary/')
-    
+    if request.method == "POST":
+        form = UserProfileForm()
+        if form.is_valid():
+            form.save()
+            return redirect('/legendary/')
+        else:
+            print(form.errors)
     else:
-
-        print(form.errors)
+        form = UserProfileForm()
 
 
     response = render(request, 'legendary/update-profile.html', {'form': form})
