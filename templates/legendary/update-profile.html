@@ -30,7 +30,6 @@
         text-align: center;
         margin: auto;
         transform: translate(0px, 15vh);
-        background-image: url('updateProfile.jpg');
     }
 
     #user_profile_form input[type="text"],
@@ -59,6 +58,17 @@
     
     #spacer {
         height: 30vh;
+    }
+
+    body{
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background-image:url("{% static 'images/updateProfile.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        background-attachment: fixed;
     }
 </style>
 {% endblock %}
