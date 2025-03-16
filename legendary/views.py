@@ -63,7 +63,7 @@ def update_profile(request):
         form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
         if form.is_valid():
             form.save()
-            return redirect('/legendary/')
+            return redirect('/legendary/profile/')
         else:
             print(form.errors)
     else:
