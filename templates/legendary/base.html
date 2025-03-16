@@ -41,8 +41,8 @@
         
         <div class="topnav">
             {% if user.is_authenticated %}
-                <a href="{% url 'legendary:profile' %}">Profile</a>
                 <a href="{% url 'legendary:logout' %}">Logout</a>
+                <a href="{% url 'legendary:profile' %}">Profile</a>
                 <a href="{% url 'legendary:change-checklist' %}">UpdateChecklist</a>
                 <a href="{% url 'legendary:update-profile' %}">UpdateProfile</a>
             {% else %}
