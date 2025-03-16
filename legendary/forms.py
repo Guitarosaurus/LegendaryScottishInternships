@@ -64,4 +64,5 @@ class ChangeChecklistForm(forms.ModelForm):
                                 help_text = "Please enter the updated checkist")
     
     class Meta:
+        model = Internship
         fields = ('name',)
