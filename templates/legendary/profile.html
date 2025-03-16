@@ -9,8 +9,7 @@
 <h1>Welcome to your Profile</h1>
 <form id="user_profile_form" method="post" action="{% url 'legendary:update-profile' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
+    {{ form.as_p }}
     <input type="submit" name="submit" value="submit" />
 </form>
 

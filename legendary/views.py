@@ -38,21 +38,17 @@ def report(request):
 @login_required
 def profile(request):
 
+    if request.method == "POST":
+        form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
+        if form.is_valid():
+            form.save()
+            return redirect('/legendary/profile/')
+        else:
+            print(form.errors)
+    else:
+        form = UserProfileForm()
 
-    # form = UserProfileForm()
-
-    # if form.is_valid():
-
-    #     form.save(commit = True)
-
-    #     return redirect('/legendary/')
-    
-    # else:
-
-    #     print(form.errors)
-
-    context_dict = {}
-    response = render(request, 'legendary/profile.html', context=context_dict)
+    response = render(request, 'legendary/profile.html', {'form': form})
 
     return response
 
