@@ -1,5 +1,6 @@
 from django.urls import path
 from legendary import views
+from django.conf.urls import url
 
 app_name = 'legendary'
 
@@ -8,8 +9,8 @@ urlpatterns = [
     path('about/', views.about,name='about'),
     path('about/report/', views.report,name='report'),
     path('profile/',views.profile,name='profile'),
-    path('profile/change-checklist',views.change_checklist,name='change_checklist'),
-    path('profile/update-profile',views.update_profile,name='update-profile'),
+    path('change-checklist/',views.change_checklist,name='change-checklist'),
+    path('update-profile/',views.update_profile,name='update-profile'),
     path('login/',views.user_login,name='login'),
     path('register/',views.register,name='register'),
     path('listings/',views.listings,name='listings'),
