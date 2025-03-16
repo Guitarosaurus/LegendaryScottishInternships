@@ -76,19 +76,22 @@ def update_profile(request):
 
 @login_required
 def change_checklist(request):
-    form = ChangeChecklistForm()
+    if request.method == "POST":
+        form = ChangeChecklistForm(request.POST)
 
-    if form.is_valid():
-        
-        form.save(commit = True)
-        #wondering the best redirect here
-        return redirect('/legendary/')
+        if form.is_valid():
+            form.save()
+            #wondering the best redirect here
+            return redirect('legendary/profile.html')
     
+        else:
+            print(form.errors) 
     else:
-        
-        print(form.errors)   
+        form = ChangeChecklistForm()  
     
-    response = render(request, 'legendary/update-checklist.html', {'form': form})
+    response = render(request, 
+                      'legendary/update-checklist.html', 
+                      {'form': form})
     
     return response
 
