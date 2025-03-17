@@ -16,6 +16,7 @@ Homepage
         <div class="listing">
             <p class="name">{{ listing.name }}</p>
             <div class="hidden" style="display: none;">
+                <p class="company">{{ listing.company_id }}</p>
                 <p class="description">{{ listing.description }}</p>
                 <p class="closedate">{{ listing.closing_date }}</p>
                 <p class="startdate">{{ listing.start_date }}</p>
@@ -31,6 +32,7 @@ Homepage
 <div class="split internship">
     <div class="details">
         <h3 id="name">No internship selected</h3>
+        <h4 id="company"></h4>
         <p id="description"></p>
         <p id="closedate"></p>
         <p id="startdate"></p>
