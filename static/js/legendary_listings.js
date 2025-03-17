@@ -12,5 +12,10 @@ $(document).ready( function() {
             $("#checklist").html($(this).children("div.hidden").children("p.checklist").html());
         }
     );
+    $("#report").click(
+        function() {
+            $(this).attr("href","../about/" + $("#name").html() + "/" + $("#report_reason").val() + "/report")
+        }
+    );
 });
 

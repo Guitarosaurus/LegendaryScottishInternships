@@ -7,6 +7,8 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from email.message import EmailMessage
+import smtplib, ssl
 
 
 
@@ -28,12 +30,23 @@ def about(request):
 
     return response
 
-def report(request):
+def report(request, internship_name, email_content):
+    
+    password = "Legendary$cottishInternships" # This isn't secure, but no-one should be able to access this source code
+    msg = EmailMessage()
+    msg.set_content(email_content)
+    msg['Subject'] = "Internship Reported - " + internship_name
+    msg['From'] = "LegendaryScottishInternships@gmx.com"
+    msg['To'] = "LegendaryScottishInternships@gmx.com"
 
-    context_dict = {}
-    response = render(request,'legendary/reportform.html', context = context_dict)
+    context = ssl.create_default_context()
+    s = smtplib.SMTP('mail.gmx.com', 587)
+    s.starttls(context=context)
+    s.login(msg['From'], password)
+    s.send_message(msg)
+    s.quit()
 
-    return response
+    return redirect(reverse('legendary:listings'))
 
 @login_required
 def profile(request):
