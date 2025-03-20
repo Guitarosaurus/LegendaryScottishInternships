@@ -52,12 +52,12 @@ class InternshipForm(forms.ModelForm):
         exclude = ('company_id', 'user_ids',)
 
 class CommentForm(forms.ModelForm):
-    name = forms.CharField(max_length=Comment.MAX_COMMENT_LENGTH)
+    data = forms.CharField(max_length=Comment.MAX_COMMENT_LENGTH)
     # Rest of fields filled in by login details?
 
     class Meta:
         model = Comment
-        fields = ('name', )
+        fields = ('data', )
 
 class ChangeChecklistForm(forms.ModelForm):
     checklist = forms.CharField(max_length=Internship.MAX_LIST_LENGTH, 

@@ -47,7 +47,7 @@ class Internship(models.Model):
 
 class Comment(models.Model):
     MAX_COMMENT_LENGTH = 1023
-    name = models.CharField(max_length=MAX_COMMENT_LENGTH)
+    data = models.CharField(max_length=MAX_COMMENT_LENGTH)
     internship_id = models.ForeignKey(Internship, on_delete=models.CASCADE)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateField(auto_now_add=True)
