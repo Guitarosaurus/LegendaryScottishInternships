@@ -12,10 +12,13 @@ Homepage
 </div>
 
 <div class="split listings">
+    <button id="hide-non-favourites">Hide Non-Favourites</button>
     {% for listing in listings %}
         <div class="listing">
-            <p class="name">{{ listing.name }}</p>
-            <div class="hidden" style="display: none;">
+            <p class="name" style="display: inline-block">{{ listing.name }}</p>
+            <p style="display: inline-block"> </p>
+            <button class="favourite" style="display: inline-block">Favourite</button>
+            <div class="hidden" style="display: none">
                 <p class="company">{{ listing.company_id }}</p>
                 <p class="description">{{ listing.description }}</p>
                 <p class="closedate">{{ listing.closing_date }}</p>
@@ -33,15 +36,22 @@ Homepage
     <div class="details">
         <h3 id="name">No internship selected</h3>
         <h4 id="company"></h4>
-        <p id="description"></p>
-        <p id="closedate"></p>
-        <p id="startdate"></p>
-        <p id="enddate"></p>
-        <p id="salary"></p>
-        <p id="address"></p>
+        <p style="display: inline-block"><strong>Description: </strong></p>
+        <p id="description" style="display: inline-block"></p></br>
+        <p style="display: inline-block"><strong>Closing Date: </strong></p>
+        <p id="closedate" style="display: inline-block"></p></br>
+        <p style="display: inline-block"><strong>Starting Date: </strong></p>
+        <p id="startdate" style="display: inline-block"></p></br>
+        <p style="display: inline-block"><strong>Ending Date: </strong></p>
+        <p id="enddate" style="display: inline-block"></p></br>
+        <p style="display: inline-block"><strong>Salary: </strong></p>
+        <p id="salary" style="display: inline-block"></p></br>
+        <p style="display: inline-block"><strong>Address: </strong></p>
+        <p id="address" style="display: inline-block"></p></br>
+        <p><strong>Things to do: </strong></p>
         <p id="checklist"></p>
-        <a id="report" href="">Report incorrect/missing information</a></br>
-        <input id="report_reason" value="Reason for reporting" type="text">
+        <textarea id="report_reason" type="text">Enter Reason for Reporting</textarea></br>
+        <a id="report" href="">Report incorrect/missing information</a>
     </div>
 </div>
 
@@ -51,7 +61,8 @@ Homepage
     height: 70vh;
     width: 49%;
     background-color: #222222;
-    overflow: scroll;
+    overflow-y: scroll;
+    line-height: 1;
 }
 .listing {
     background-color: #303030;

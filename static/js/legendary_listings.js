@@ -1,4 +1,10 @@
 $(document).ready( function() {
+    $(".listing").each(
+        function(index, item) {
+            $(item).children("button.favourite").html(localStorage.getItem($(this).children("p.name").html() + "_is_favourite") === "true" ? "unfavourite":"favourite")
+            
+        }
+    );
     $('.listing').click(
         function() {
             $("#name").html($(this).children("p.name").html());
@@ -9,12 +15,54 @@ $(document).ready( function() {
             $("#enddate").html($(this).children("div.hidden").children("p.enddate").html());
             $("#salary").html($(this).children("div.hidden").children("p.salary").html());
             $("#address").html($(this).children("div.hidden").children("p.address").html());
-            $("#checklist").html($(this).children("div.hidden").children("p.checklist").html());
+            $("#checklist").html('<label><input class="checklistbox" type="checkbox"> <p style="display: inline-block">' + $(this).children("div.hidden").children("p.checklist").html().replace(/\n/g, '</p></label></br><label><input class="checklistbox" type="checkbox"> <p style="display: inline-block">') + '</p></label>');
+            $(".checklistbox").each(
+                function(index, item) {
+                    $(item).prop('checked', localStorage.getItem($(item).parent().children("p").html()) === "true");
+                }
+            );
         }
     );
+    $('.favourite').click(
+        function() {
+            if ($(this).html() === "favourite") {
+                localStorage.setItem($(this).parent().children("p.name").html() + "_is_favourite", true);
+                $(this).html("unfavourite");
+            } else {
+                localStorage.setItem($(this).parent().children("p.name").html() + "_is_favourite", false);
+                $(this).html("favourite");
+            }
+        }
+    );
+    $("#checklist").on('change', 'input', function(){ 
+        localStorage.setItem($(this).parent().children("p").html(), $(this).is(":checked"));
+        console.log(localStorage.getItem($(this).parent().children("p").html()));
+    });
     $("#report").click(
         function() {
-            $(this).attr("href","../about/" + $("#name").html() + "/" + $("#report_reason").val() + "/report")
+            $(this).attr("href","../about/" + $("#name").html() + "/" + $("#report_reason").val().replace(/\n/g, '%0A') + "/report");
+        }
+    );
+    let nonFavouritesShown = false;
+    $("#hide-non-favourites").click(
+        function() {
+            if (nonFavouritesShown) {
+                $(".listing").each(
+                    function(index, item) {
+                        $(item).css("display", "block");
+                        $("#hide-non-favourites").html("Hide Non-Favourites");
+                        nonFavouritesShown = false;
+                    }
+                );
+            } else {
+                $(".listing").each(
+                    function(index, item) {
+                        $(item).css("display", localStorage.getItem($(this).children("p.name").html() + "_is_favourite") === "true" ? "block":"none");
+                        $("#hide-non-favourites").html("Show Non-Favourites");
+                        nonFavouritesShown = true;
+                    }
+                );
+            }
         }
     );
 });
