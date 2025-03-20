@@ -51,17 +51,19 @@ def report(request, internship_name, email_content):
 @login_required
 def profile(request):
 
-    if request.method == "POST":
-        form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
-        if form.is_valid():
-            form.save()
-            return redirect('/legendary/profile/')
-        else:
-            print(form.errors)
-    else:
-        form = UserProfileForm()
+# Shouldnt profile not have a form when accessing but instead have this mapped to button on porfile page?
+    # if request.method == "POST":
+    #     form = UserProfileForm(request.POST, request.FILES, instance=request.user)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('/legendary/profile/')
+    #     else:
+    #         print(form.errors)
+    # else:
+    #     # form = UserProfileForm()
+    #     print("hello")
 
-    response = render(request, 'legendary/profile.html', {'form': form})
+    response = render(request, 'legendary/profile.html', context={}) #{'form': form})
 
     return response
 
@@ -69,7 +71,7 @@ def profile(request):
 def update_profile(request):
 
     if request.method == "POST":
-        form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
+        form = UserProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('/legendary/profile/')
@@ -86,12 +88,13 @@ def update_profile(request):
 @login_required
 def change_checklist(request):
     if request.method == "POST":
-        form = ChangeChecklistForm(request.POST)
+        form = ChangeChecklistForm(request.POST, instance=request.user)
 
         if form.is_valid():
             form.save()
             #wondering the best redirect here
-            return redirect('legendary/profile.html')
+            # Took out html so redirect works
+            return redirect('/legendary/profile/')
     
         else:
             print(form.errors) 

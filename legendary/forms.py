@@ -52,17 +52,18 @@ class InternshipForm(forms.ModelForm):
         exclude = ('company_id', 'user_ids',)
 
 class CommentForm(forms.ModelForm):
+    # Commented out why?
     # data = forms.CharField(max_length=Comment.MAX_COMMENT_LENGTH)
-    # Rest of fields filled in by login details?
 
     class Meta:
         model = Comment
         fields = ()
 
 class ChangeChecklistForm(forms.ModelForm):
+    # Make it so checklist name is selected from all current internships?
     checklist = forms.CharField(max_length=Internship.MAX_LIST_LENGTH, 
                                 help_text = "Please enter the updated checkist")
-    
     class Meta:
+        # Internship has a required fields that shouldnt be updated
         model = Internship
         fields = ('name',)
