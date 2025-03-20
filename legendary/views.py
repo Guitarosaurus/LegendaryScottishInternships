@@ -160,6 +160,26 @@ def register(request):
 
     return response
 
+@login_required
+def comment(request, internship_id, comment_data):
+
+    if request.method == 'GET':
+        comment_form = CommentForm(request.POST)
+
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.internship_id = Internship.objects.get(name=internship_id)
+            comment.data = comment_data
+            comment.user_id = request.user
+            comment.save()
+            
+        else:
+            print(comment_form.errors)
+    else:
+        comment_form = CommentForm()
+
+    return redirect(reverse('legendary:listings'))
+
 def listings(request):
 
     context_dict = {}

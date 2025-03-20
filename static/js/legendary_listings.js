@@ -21,6 +21,8 @@ $(document).ready( function() {
                     $(item).prop('checked', localStorage.getItem($(item).parent().children("p").html()) === "true");
                 }
             );
+            console.log($(this).children("div.hidden").children("div.comments").children());
+            $("#comments").html($(this).children("div.hidden").children("div.comments").html());
         }
     );
     $('.favourite').click(
@@ -41,6 +43,11 @@ $(document).ready( function() {
     $("#report").click(
         function() {
             $(this).attr("href","../about/" + $("#name").html() + "/" + $("#report_reason").val().replace(/\n/g, '%0A') + "/report");
+        }
+    );
+    $("#post_comment").click(
+        function() {
+            $(this).attr("href", $("#name").html() + "/" + $("#comment").val() + "/comment");
         }
     );
     let nonFavouritesShown = false;

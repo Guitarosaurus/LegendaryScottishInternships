@@ -14,6 +14,7 @@ urlpatterns = [
     path('login/',views.user_login,name='login'),
     path('register/',views.register,name='register'),
     path('listings/',views.listings,name='listings'),
+    path('listings/<str:internship_id>/<str:comment_data>/comment/',views.comment,name='comment'),
     path('logout/', views.user_logout, name='logout'),
     
 ]
