@@ -7,16 +7,7 @@
 
 {% block body_block %}
 <h1>Welcome to your Profile</h1>
-<!--Should this be in seperate page for updating profile-->
-<!-- <form id="user_profile_form" method="post" action="{% url 'legendary:update-profile' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" name="submit" value="submit" />
-</form> -->
 
-<!--Add in profile photo-->
-
-<!--Buttons take us to update profile and update checklist-->
 <button id = "updateProfileButton" class = "button">Update Profile Picture</button>
 <button id="updateChecklistButton" class = "button">Update Checklist</button>
 
@@ -74,6 +65,17 @@
     
     #spacer {
         height: 30vh;
+    }
+
+    body{
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background-image:url("{% static 'images/profile.jpg' %}");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        background-attachment: fixed;
     }
 </style>
 {% endblock %}
