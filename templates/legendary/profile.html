@@ -7,11 +7,27 @@
 
 {% block body_block %}
 <h1>Welcome to your Profile</h1>
+<!--Should this be in seperate page for updating profile-->
 <!-- <form id="user_profile_form" method="post" action="{% url 'legendary:update-profile' %}" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" name="submit" value="submit" />
 </form> -->
+
+<!--Add in profile photo-->
+
+<!--Buttons take us to update profile and update checklist-->
+<button id = "updateProfileButton" class = "button">Update Profile Picture</button>
+<button id="updateChecklistButton" class = "button">Update Checklist</button>
+
+<script type = "text/javascript">
+    document.getElementById("updateChecklistButton").onclick = function() {
+        location.href = "/legendary/change-checklist/";
+    }
+    document.getElementById("updateProfileButton").onclick = function() {
+        location.href = "/legendary/update-profile/";
+    }
+</script>
 
 <style>
     h1 {
