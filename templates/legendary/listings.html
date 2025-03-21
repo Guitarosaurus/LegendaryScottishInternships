@@ -11,6 +11,10 @@ Listings
     <h1>Welcome to the Legendary Scottish Internships listings page</h1>
 </div>
 
+<div class="filter">
+    
+</div>
+
 <div class="split listings">
     <button id="hide-non-favourites">Hide Non-Favourites</button>
     {% for listing in listings %}
@@ -29,7 +33,7 @@ Listings
                 <p class="checklist">{{ listing.checklist }}</p>
                 <div class="comments">
                     {% for comment in listing.comment_set.all %}
-                        <div style="background-color: #333333">
+                        <div class="comment">
                             <h4>{{ comment.user_id }}</h4>
                             <p>{{ comment.data }}</p>
                         </div>
@@ -61,11 +65,11 @@ Listings
         <p id="checklist"></p>
         <textarea id="report_reason" type="text">Enter Reason for Reporting</textarea></br>
         <a id="report" href="">Report incorrect/missing information</a></br>
-        {% if user.is_authenticated %}
-            <h4>Leave a comment</h4>
-            <input id="comment" type="text" value="Enter comment...">
-            <a id="post_comment" href="">Post</a>
-        {% endif %}
+            {% if user.is_authenticated %}
+                <h4>Leave a comment</h4>
+                <input id="comment" type="text" value="Enter comment...">
+                <a id="post_comment" href="">Post</a>
+            {% endif %}
         <h4>Comments</h4>
         <div id="comments"></div>
     </div>
@@ -75,24 +79,40 @@ Listings
 .split {
     display:inline-block;
     height: 70vh;
-    width: 49%;
-    background-color: #222222;
+    width: 40%;
+    background-color: #cccccc;
+    overflow-y: scroll;
+    line-height: 1;
+}
+.filter {
+    display:inline-block;
+    height: 70vh;
+    width: 19%;
+    background-color: #cccccc;
     overflow-y: scroll;
     line-height: 1;
 }
 .listing {
-    background-color: #303030;
+    background-color: #aaaaaa;
     border-style: solid;
     border-width: 2px;
-    border-color: #444464;
+    border-color: #666686;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.comment {
+    background-color: #eeeeee;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #aaaaff;
     border-radius: 5px;
     padding-left: 10px;
 }
 .listing:hover {
-    background-color: #404040;
+    background-color: #eeeeee;
     border-style: solid;
     border-width: 2px;
-    border-color: #444464;
+    border-color: #666686;
     border-radius: 5px;
     padding-left: 10px;
 }
