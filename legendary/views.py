@@ -51,19 +51,9 @@ def report(request, internship_name, email_content):
 @login_required
 def profile(request):
 
-# Shouldnt profile not have a form when accessing but instead have this mapped to button on porfile page?
-    # if request.method == "POST":
-    #     form = UserProfileForm(request.POST, request.FILES, instance=request.user)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('/legendary/profile/')
-    #     else:
-    #         print(form.errors)
-    # else:
-    #     # form = UserProfileForm()
-    #     print("hello")
+    context_dict = {request.user.userprofile.picture}
 
-    response = render(request, 'legendary/profile.html', context={}) #{'form': form})
+    response = render(request, 'legendary/profile.html', context={})
 
     return response
 
@@ -78,7 +68,7 @@ def update_profile(request):
         else:
             print(form.errors)
     else:
-        form = UserProfileForm()
+        form = UserProfileForm(instance=request.user)
 
 
     response = render(request, 'legendary/update-profile.html', {'form': form})
@@ -87,6 +77,7 @@ def update_profile(request):
 
 @login_required
 def change_checklist(request):
+
     if request.method == "POST":
         form = ChangeChecklistForm(request.POST, instance=request.user)
 
@@ -99,7 +90,7 @@ def change_checklist(request):
         else:
             print(form.errors) 
     else:
-        form = ChangeChecklistForm()  
+        form = ChangeChecklistForm(instance=request.user)  
     
     response = render(request, 
                       'legendary/update-checklist.html', 

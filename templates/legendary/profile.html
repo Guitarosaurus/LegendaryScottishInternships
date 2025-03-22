@@ -7,10 +7,17 @@
 
 {% block body_block %}
 <h1>Welcome to your Profile</h1>
-
+<div>
+{% if user.is_authenticated %}
+    <img src="/static/{{ request.user.userprofile.picture.url }}" id="profile_picture">
+{% else %}
+    <img src="{% static 'images/generic_profile.jpg' %}" id = "profile_picture">
+{% endif %}
+</div>
+<div>
 <button id = "updateProfileButton" class = "button">Update Profile Picture</button>
-<button id="updateChecklistButton" class = "button">Update Checklist</button>
-
+<button id = "updateChecklistButton" class = "button">Update Checklist</button>
+</div>
 <script type = "text/javascript">
     document.getElementById("updateChecklistButton").onclick = function() {
         location.href = "/legendary/change-checklist/";
@@ -81,6 +88,15 @@
     button{
         width: 200px;
         height: 30px;
+    }
+
+    #profile_picture{
+        border: 7px solid white;
+        border-radius: 10%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        height: 300px;
+        width: 300px;
+        object-fit: cover;
     }
 </style>
 {% endblock %}
