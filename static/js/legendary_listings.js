@@ -72,5 +72,35 @@ $(document).ready( function() {
             }
         }
     );
+    $("#filter-button-name").click(
+        function() {
+            $(".listing").each(
+                function(index, item) {
+                    let name = $(item).children("p.name").html();
+                    $(item).css("display", name.includes($("#filter-name").val()) ? "block" : "none");
+                }
+            );
+        }
+    );
+    $("#filter-button-company").click(
+        function() {
+            $(".listing").each(
+                function(index, item) {
+                    let company = $(item).children("div.hidden").children("p.company").html();
+                    $(item).css("display", company.includes($("#filter-company").val()) ? "block" : "none");
+                }
+            );
+        }
+    );
+    $("#filter-button-location").click(
+        function() {
+            $(".listing").each(
+                function(index, item) {
+                    let name = $(item).children("div.hidden").children("p.address").html();
+                    $(item).css("display", name.includes($("#filter-location").val()) ? "block" : "none");
+                }
+            );
+        }
+    );
 });
 

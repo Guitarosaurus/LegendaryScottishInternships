@@ -12,11 +12,18 @@ Listings
 </div>
 
 <div class="filter">
-    
+    <h3>Filters</h3>
+    <input id="filter-name" type="text" placeholder="Name">
+    <button id="filter-button-name">Filter Name</button></br></br>
+    <input id="filter-company" type="text" placeholder="Company">
+    <button id="filter-button-company">Filter Company</button></br></br>
+    <input id="filter-location" type="text" placeholder="Location">
+    <button id="filter-button-location">Filter Location</button>
 </div>
 
 <div class="split listings">
-    <button id="hide-non-favourites">Hide Non-Favourites</button>
+    <h3>Listings</h3>
+    <button id="hide-non-favourites">Hide Non-Favourites</button></br>
     {% for listing in listings %}
         <div class="listing">
             <p class="name" style="display: inline-block">{{ listing.name }}</p>
@@ -34,7 +41,7 @@ Listings
                 <div class="comments">
                     {% for comment in listing.comment_set.all %}
                         <div class="comment">
-                            <h4>{{ comment.user_id }}</h4>
+                            <p>User <strong>{{ comment.user_id }}</strong> says:</p>
                             <p>{{ comment.data }}</p>
                         </div>
                     {% endfor %}
@@ -63,11 +70,11 @@ Listings
         <p id="address" style="display: inline-block"></p></br>
         <p><strong>Things to do: </strong></p>
         <p id="checklist"></p>
-        <textarea id="report_reason" type="text">Enter Reason for Reporting</textarea></br>
+        <textarea id="report_reason" type="text" placeholder="Enter reason for reporting"></textarea></br>
         <a id="report" href="">Report incorrect/missing information</a></br>
             {% if user.is_authenticated %}
                 <h4>Leave a comment</h4>
-                <input id="comment" type="text" value="Enter comment...">
+                <input id="comment" type="text" placeholder="Enter comment...">
                 <a id="post_comment" href="">Post</a>
             {% endif %}
         <h4>Comments</h4>
@@ -76,6 +83,16 @@ Listings
 </div>
 
 <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-image: url("{% static 'images/index.jpg' %}"); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+}
 .split {
     display:inline-block;
     height: 70vh;
@@ -87,10 +104,12 @@ Listings
 .filter {
     display:inline-block;
     height: 70vh;
-    width: 19%;
+    width: 18%;
     background-color: #cccccc;
     overflow-y: scroll;
     line-height: 1;
+    padding-left: 0.5%;
+    margin-left: 0.5%;
 }
 .listing {
     background-color: #aaaaaa;
