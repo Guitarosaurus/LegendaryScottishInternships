@@ -8,11 +8,8 @@
 {% block body_block %}
 <h1>Welcome to your Profile</h1>
 <div>
-{% if user.is_authenticated %}
     <img src="/static/{{ request.user.userprofile.picture.url }}" id="profile_picture">
-{% else %}
-    <img src="{% static 'images/generic_profile.jpg' %}" id = "profile_picture">
-{% endif %}
+    {{ user.username }}
 </div>
 <div>
 <button id = "updateProfileButton" class = "button">Update Profile Picture</button>

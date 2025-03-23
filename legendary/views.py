@@ -51,9 +51,13 @@ def report(request, internship_name, email_content):
 @login_required
 def profile(request):
 
-    context_dict = {request.user.userprofile.picture}
+    user_form = UserForm(instance=request.user)
+    user_profile_form = UserProfileForm(instance = request.user)
+    user_requested = User.objects.get_or_create(id = request.user.id)[0]
+    if(user_requested.userprofile.picture == ""):
+        request.user.userprofile.picture = "/images/generic_profile.jpg"
 
-    response = render(request, 'legendary/profile.html', context={})
+    response = render(request, 'legendary/profile.html', {'user_form':user_form, 'user_profile_form':user_profile_form})
 
     return response
 
