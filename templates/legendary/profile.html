@@ -7,10 +7,17 @@
 
 {% block body_block %}
 <h1>Welcome to your Profile</h1>
-<div>
-    <img src="/static/{{ request.user.userprofile.picture.url }}" id="profile_picture">
-    {{ user.username }}
+<div id = "picture">
+    <img src="/{{ user.userprofile.picture }}" id="profile_picture">
 </div>
+<div id = "properties">
+    <a id = "username">
+        {{ user.username }} 
+    </a>
+    <a id = "email">
+        {{ user.email }}
+    </a>
+    </div>
 <div>
 <button id = "updateProfileButton" class = "button">Update Profile Picture</button>
 <button id = "updateChecklistButton" class = "button">Update Checklist</button>
@@ -94,6 +101,30 @@
         height: 300px;
         width: 300px;
         object-fit: cover;
+    }
+
+    #username {
+        margin-top: 10%;
+        border: 7px solid white;
+        text-align: left;
+        background-color: white;
+        border-radius: 10%;
+    }
+
+    #email{
+        text-align: left;
+        padding-right: 5%;
+    }
+
+    #picture{
+        width: calc(50% - 40px);
+        display: inline;
+    }
+
+    #properties{
+        width: calc(50% - 40px);
+        display: inline;
+        vertical-align: top;
     }
 </style>
 {% endblock %}

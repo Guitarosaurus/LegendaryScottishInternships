@@ -56,10 +56,8 @@ def profile(request):
 
 @login_required
 def update_profile(request):
-
     if request.method == "POST":
-        form = UserProfileForm(request.POST, request.FILES, instance=request.user)
-        print(request.FILES)
+        form = UserProfileForm(request.POST, request.FILES, instance=request.user.userprofile)
         if form.is_valid():
             form.save()
             return redirect('/legendary/profile/')
@@ -67,7 +65,6 @@ def update_profile(request):
             print(form.errors)
     else:
         form = UserProfileForm(instance=request.user)
-
 
     response = render(request, 'legendary/update-profile.html', {'form': form})
 
@@ -81,8 +78,6 @@ def change_checklist(request):
 
         if form.is_valid():
             form.save()
-            #wondering the best redirect here
-            # Took out html so redirect works
             return redirect('/legendary/profile/')
     
         else:
