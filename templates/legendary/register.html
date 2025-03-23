@@ -7,15 +7,25 @@
 
 {% block body_block %}
 <h1>Register for Legendary!</h1>
-
+{% if registered %}
+<div style="display: flex; justify-content: center;">
+    <strong style="font-size: 30px;">Thank you for registering!</strong>
+</div>
+<div style="display: flex; justify-content: center;">
+    <a href="{% url 'legendary:index' %}" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">
+        Return to the homepage.
+    </a>
+</div>
+{% else %}
     <form id="user_form" method="post" action="{% url 'legendary:register' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
         <input type="submit" name="submit" value="Register" />
     </form>
-
+{% endif %}
 <style>
+
     h1 {
         font-family: 'Georgia', serif;
         font-size: 30px;
