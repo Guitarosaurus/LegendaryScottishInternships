@@ -50,11 +50,7 @@ def report(request, internship_name, email_content):
 
 @login_required
 def profile(request):
-
-    context = {
-        'profile_picture': 'legendary/static/images/profile_images',}
-    
-    response = render(request, 'legendary/profile.html', context)
+    response = render(request, 'legendary/profile.html')
 
     return response
 
