@@ -21,7 +21,6 @@ $(document).ready( function() {
                     $(item).prop('checked', localStorage.getItem($(item).parent().children("p").html()) === "true");
                 }
             );
-            console.log($(this).children("div.hidden").children("div.comments").children());
             $("#comments").html($(this).children("div.hidden").children("div.comments").html());
         }
     );
