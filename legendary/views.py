@@ -51,6 +51,11 @@ def report(request, internship_name, email_content):
 @login_required
 def profile(request):
     response = render(request, 'legendary/profile.html')
+    context = {
+        'profile_picture': 'legendary/static/images/profile_images',}
+    context['listings'] = Internship.objects.order_by('-name')
+    
+    response = render(request, 'legendary/profile.html', context)
 
     return response
 

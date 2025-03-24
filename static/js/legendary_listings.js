@@ -1,7 +1,7 @@
 $(document).ready( function() {
     $(".listing").each(
         function(index, item) {
-            $(item).children("button.favourite").html(localStorage.getItem($(this).children("p.name").html() + "_is_favourite") === "true" ? "unfavourite":"favourite")
+            $(item).children("button.favourite").html(localStorage.getItem("Legendary::" + $(this).children("p.name").html() + "_is_favourite") === "true" ? "unfavourite":"favourite")
             
         }
     );
@@ -18,7 +18,7 @@ $(document).ready( function() {
             $("#checklist").html('<label><input class="checklistbox" type="checkbox"> <p style="display: inline-block">' + $(this).children("div.hidden").children("p.checklist").html().replace(/\n/g, '</p></label></br><label><input class="checklistbox" type="checkbox"> <p style="display: inline-block">') + '</p></label>');
             $(".checklistbox").each(
                 function(index, item) {
-                    $(item).prop('checked', localStorage.getItem($(item).parent().children("p").html()) === "true");
+                    $(item).prop('checked', localStorage.getItem("Legendary::" + $(this).parent().parent().children(".name").html() + "::" + $(this).parent().children("p").html(), $(this).is(":checked")) === "true");
                 }
             );
             $("#comments").html($(this).children("div.hidden").children("div.comments").html());
@@ -27,17 +27,16 @@ $(document).ready( function() {
     $('.favourite').click(
         function() {
             if ($(this).html() === "favourite") {
-                localStorage.setItem($(this).parent().children("p.name").html() + "_is_favourite", true);
+                localStorage.setItem("Legendary::" + $(this).parent().children("p.name").html() + "_is_favourite", true);
                 $(this).html("unfavourite");
             } else {
-                localStorage.setItem($(this).parent().children("p.name").html() + "_is_favourite", false);
+                localStorage.setItem("Legendary::" + $(this).parent().children("p.name").html() + "_is_favourite", false);
                 $(this).html("favourite");
             }
         }
     );
     $("#checklist").on('change', 'input', function(){ 
-        localStorage.setItem($(this).parent().children("p").html(), $(this).is(":checked"));
-        console.log(localStorage.getItem($(this).parent().children("p").html()));
+        localStorage.setItem("Legendary::" + $("#name").html() + "::" + $(this).parent().children("p").html(), $(this).is(":checked"));
     });
     $("#report").click(
         function() {

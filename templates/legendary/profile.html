@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body_block %}
+<script src="{% static "js/legendary_profile.js" %}" crossorigin="anonymous"></script>
 <h1>Welcome to your Profile</h1>
 
 <div id = "picture">
@@ -24,6 +25,33 @@
 <button id = "updateProfileButton" class = "button">Update Profile Picture</button>
 <button id = "updateChecklistButton" class = "button">Update Checklist</button>
 </div>
+<div id="favourite-listings">
+    {% for listing in listings %}
+        <div class="listing" style="display: inline-block">
+            <p class="name" style="display: inline-block">{{ listing.name }}</p>
+            <button class="show" style="display: inline-block">Show/Hide</button>
+            <p class="company"></p>
+            <p class="description"></p>
+            <p class="closedate"></p>
+            <p class="startdate"></p>
+            <p class="enddate"></p>
+            <p class="salary"></p>
+            <p class="address"></p>
+            <p class="checklist"></p>
+            <div class="hidden" style="display: none">
+                <p class="shown">false</p>
+                <p class="company">{{ listing.company_id }}</p>
+                <p class="description">{{ listing.description }}</p>
+                <p class="closedate">{{ listing.closing_date }}</p>
+                <p class="startdate">{{ listing.start_date }}</p>
+                <p class="enddate">{{ listing.end_date }}</p>
+                <p class="salary">{{ listing.salary }}</p>
+                <p class="address">{{ listing.address }}</p>
+                <p class="checklist">{{ listing.checklist }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
 <script type = "text/javascript">
     document.getElementById("updateChecklistButton").onclick = function() {
         location.href = "/legendary/change-checklist/";
@@ -38,6 +66,36 @@
     text-align: center;
     color: #daf511;
     margin-bottom: 20px;
+    }
+    
+    .listing {
+        background-color: #aaaaaa;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #666686;
+        border-radius: 5px;
+        padding-left: 10px;
+    }
+    
+    .listing:hover {
+        background-color: #eeeeee;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #666686;
+        border-radius: 5px;
+        padding-left: 10px;
+    }
+    
+    #favourite-listings {
+        display:inline-block;
+        overflow-y: scroll;
+        height: 30vh;
+        width: 99.5%;
+        line-height: 1;
+        border-radius: 5px;
+        border-width: 1px;
+        border-color: #444444;
+        border-style: solid;
     }
 
     #user_profile_form {
