@@ -7,17 +7,19 @@
 
 {% block body_block %}
 <h1>Welcome to your Profile</h1>
+
 <div id = "picture">
     <img src="/{{ user.userprofile.picture }}" id="profile_picture">
 </div>
+
 <div id = "properties">
-    <a id = "username">
-        {{ user.username }} 
-    </a>
-    <a id = "email">
-        {{ user.email }}
-    </a>
-    </div>
+    <p id = "username">
+        Username : {{ user.username }} 
+    </br>
+        Email : <a href = {{user.email}}>{{ user.email }}</a>
+    </p>
+</div>
+
 <div>
 <button id = "updateProfileButton" class = "button">Update Profile Picture</button>
 <button id = "updateChecklistButton" class = "button">Update Checklist</button>
@@ -97,6 +99,7 @@
     #profile_picture{
         border: 7px solid white;
         border-radius: 10%;
+        border-top-right-radius: 0%;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         height: 300px;
         width: 300px;
@@ -105,15 +108,11 @@
 
     #username {
         margin-top: 10%;
-        border: 7px solid white;
-        text-align: left;
-        background-color: white;
-        border-radius: 10%;
+        position: absolute;
     }
 
     #email{
-        text-align: left;
-        padding-right: 5%;
+        position: absolute;
     }
 
     #picture{
@@ -125,6 +124,17 @@
         width: calc(50% - 40px);
         display: inline;
         vertical-align: top;
+        position: relative;
+    }
+
+    p{
+        background-color: white;
+        border: 7px solid white;
+        border-top-right-radius: 5%;
+        border-bottom-right-radius: 5%;
+        text-align: left;
+        display: inline;
+        font-size: 20px;
     }
 </style>
 {% endblock %}

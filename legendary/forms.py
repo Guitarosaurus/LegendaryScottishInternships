@@ -52,9 +52,6 @@ class InternshipForm(forms.ModelForm):
         exclude = ('company_id', 'user_ids',)
 
 class CommentForm(forms.ModelForm):
-    # Commented out why?
-    # data = forms.CharField(max_length=Comment.MAX_COMMENT_LENGTH)
-
     class Meta:
         model = Comment
         fields = ()
