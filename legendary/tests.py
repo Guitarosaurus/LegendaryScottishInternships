@@ -22,8 +22,7 @@ class CompanyTests(TestCase):
 
         self.assertEqual(company.website, "https://en.wikipedia.org/w/index.php?search=&title=Special%3ASearch&profile=advanced&fulltext=1&ns0=1")
 
-    def test_larger_than_field_length(self):
-        # Can be greater than limit?
+    def test_largest_field_length(self):
         company = Company(name = "test")
         company.email = "1" * Company.MAX_EMAIL_LENGTH
 
@@ -113,5 +112,3 @@ class DatabaseTests(TestCase):
         internships = Internship.objects.filter()
 
         self.assertEqual(len(internships), 2, f"Expected 2 internships")
-
-## Add tests to test admin functionality

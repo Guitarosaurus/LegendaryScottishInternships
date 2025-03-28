@@ -39,10 +39,8 @@ class InternshipForm(forms.ModelForm):
     start_date = forms.DateField(help_text="Please enter the start date.")
     end_date = forms.DateField(help_text="Please enter the end date.")
     salary = forms.FloatField(help_text="Please enter the salary.")
-    # Company_Id not entered?
     address = forms.CharField(max_length=Internship.MAX_ADDR_LENGTH,
                               help_text = "Please enter the address")
-    # Not sure if there is a better way to enter the checklist
     checklist = forms.CharField(max_length=Internship.MAX_LIST_LENGTH,
                                 help_text="Please enter items required")
     slug = forms.CharField( required=False)
@@ -57,10 +55,9 @@ class CommentForm(forms.ModelForm):
         fields = ()
 
 class ChangeChecklistForm(forms.ModelForm):
-    # Make it so checklist name is selected from all current internships?
     checklist = forms.CharField(max_length=Internship.MAX_LIST_LENGTH, 
                                 help_text = "Please enter the updated checkist")
     class Meta:
-        # Internship has a required fields that shouldnt be updated
+        # Internship has a required fields that arent updated to acquired from instance
         model = Internship
         fields = ('name',)

@@ -15,7 +15,6 @@ import smtplib, ssl
 def index(request):
 
     context_dict = {}
-
     
     # Obtain our Response object early so we can add cookie information.
     response = render(request, 'legendary/index.html', context=context_dict)
